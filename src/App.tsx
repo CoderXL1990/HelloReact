@@ -14,14 +14,14 @@ function App() {
         src = {viteLogo} 
         url="https://vite.dev"
         alt="Vite logo"
-        className='logo'
+        
           />
 
         <Logo 
         src = {reactLogo} 
         url="https://react.dev"
         alt="React logo"
-        className='logo react'
+        isReact
           />
 
       
