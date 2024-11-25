@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect} from "react";
+import { useState, useEffect, useMemo} from "react";
 
 type Props = {
   onChange: (value: string) => void,
@@ -9,6 +9,12 @@ type Props = {
 const Search = (props: Props) => {
   const { onChange } = props;
   const [value, setValue] = useState("");
+  const func = useMemo( () => {
+   return (e: React.ChangeEvent<HTMLInputElement>) => {
+      setValue(e.target.value);
+    }
+  }, []);
+
   useEffect(() => {
     onChange(value);
   }, [onChange, value]);
@@ -18,9 +24,7 @@ const Search = (props: Props) => {
       <input
         type="text"
         value={value}
-        onChange={(e) => {
-          setValue(e.target.value);
-        }}
+        onChange={func}
       />
     </div>
   );
