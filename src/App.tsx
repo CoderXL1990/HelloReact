@@ -5,7 +5,7 @@ import Tabs from "./components/Tabs";
 function App() {
   return (
     <>
-    
+      <div className="bg-red-400">xxxxxx</div>
       <Tabs />
       <Routes>
         <Route index element={<Home />} />
