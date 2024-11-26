@@ -6,21 +6,20 @@ const List = () => {
 
   const addAction = (str: string) => {
     if (str.trim() !== "") {
-      // setSearchList.push(str);
       setSearchList((prevList) => [...prevList, searchText]);
     }
     setSearchText("");
-    (document.querySelector("#inputElement")! as HTMLInputElement) .blur()
-    
+    (document.querySelector("#inputElement")! as HTMLInputElement).blur();
   };
 
-  const deleteAction = (item: string) => {
-    setSearchList((prevList) => prevList.filter((i) => i !== item));
+  const deleteAction = (index: number) => {
+    setSearchList((prevList) => {
+      return prevList.filter((_, i) => i !== index);
+    });
   };
 
   const searchTextHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
-    
   };
 
   return (
@@ -30,7 +29,8 @@ const List = () => {
           My To Do List
         </h2>
         <div className="searchContainer w-full flex flex-row justify-center items-center ">
-          <input id="inputElement"
+          <input
+            id="inputElement"
             className=" w-8/12 leading-10 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500 z-10 pl-2"
             type="text"
             placeholder="Title..."
@@ -55,11 +55,11 @@ const List = () => {
                 key={index}
                 className="text-lg text-neutral-800 h-12 bg-slate-200 flex justify-between items-center pl-20 pr-2  odd:bg-slate-100 even:bg-slate-200 hover:bg-slate-300 "
               >
-                <span >{item}</span>
+                <span>{item}</span>
                 <button
                   className="w-14 h-full hover:bg-red-500 text-sm text-black"
                   onClick={() => {
-                    deleteAction(item);
+                    deleteAction(index);
                   }}
                 >
                   X
