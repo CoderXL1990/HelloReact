@@ -28,7 +28,7 @@ const Search = (props: Props) => {
 
   return (
     <div>
-      <input type="text" value={value} onChange={onValueChanged} />
+      <input type="text" value={value} onChange={onValueChanged}  />
     </div>
   );
 };
