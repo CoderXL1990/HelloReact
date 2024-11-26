@@ -10,6 +10,11 @@ const tabItems = [
     to: "/todo",
     title: "Todo",
   },
+  {
+    to: "/list",
+    title: "List",
+  }
+
 ];
 
 const Tabs = () => {
@@ -22,9 +27,7 @@ const Tabs = () => {
               to={item.to}
               className={({ isActive }) => {
                 const style = "inline-block p-4 border-b-2  rounded-t-lg";
-
                 const activeStyle = " text-red-600 border-red-600 active ";
-
                 return isActive
                   ? `${style} ${activeStyle}`
                   : `${style} border-transparent hover:text-gray-600 hover:border-gray-300`;
