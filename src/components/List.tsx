@@ -9,7 +9,6 @@ const List = () => {
       // setSearchList.push(str);
       setSearchList((prevList) => [...prevList, searchText]);
     }
-    console.log(searchText);
     setSearchText("");
     (document.querySelector("#inputElement")! as HTMLInputElement) .blur()
     
