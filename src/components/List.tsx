@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 const List = () => {
   const [searchList, setSearchList] = useState<string[]>([]);
   const [searchText, setSearchText] = useState("");
-
+  const inputRef = useRef<HTMLInputElement>(null);
   const addAction = (str: string) => {
     if (str.trim() !== "") {
       setSearchList((prevList) => [...prevList, searchText]);
     }
     setSearchText("");
-    (document.querySelector("#inputElement")! as HTMLInputElement).blur();
+    inputRef.current?.blur();
   };
 
   const deleteAction = (index: number) => {
@@ -30,7 +30,7 @@ const List = () => {
         </h2>
         <div className="searchContainer w-full flex flex-row justify-center items-center ">
           <input
-            id="inputElement"
+            ref={inputRef}
             className=" w-8/12 leading-10 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500 z-10 pl-2"
             type="text"
             placeholder="Title..."
